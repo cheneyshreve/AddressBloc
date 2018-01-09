@@ -63,12 +63,13 @@ class MenuController
  def view_entry_by_number
   puts "Please entry the entry number you'd like to view: "
   entry_number = gets.chomp.to_i
+  index_to_get = entry_number - 1
   len = address_book.entries.length
   valid_numbers = [*1..len]
   if valid_numbers.include?(entry_number.to_i)
     puts "You selected #{entry_number}"
     address_book.entries.each_with_index do |entry,index|
-      if index == entry_number - 1
+      if index == index_to_get 
         puts entry.to_s
       end
     end
