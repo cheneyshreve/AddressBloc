@@ -64,17 +64,15 @@ class MenuController
   puts "Please entry the entry number you'd like to view: "
   entry_number = gets.chomp.to_i
   index_to_get = entry_number - 1
-  len = address_book.entries.length
-  valid_numbers = [*1..len]
-  if valid_numbers.include?(entry_number.to_i)
-    puts "You selected #{entry_number}"
-    address_book.entries.each_with_index do |entry,index|
-      if index == index_to_get 
-        puts entry.to_s
-      end
-    end
+
+  if entry_number < @address_book.entries.count + 1
+    puts @address_book.entries[index_to_get]
+    puts "Press enter to return to the main menu"
+    gets.chomp
+    system "clear"
   else
     puts "#{entry_number} is not a valid input. Please enter a valid number."
+    view_entry_by_number
   end
 
  end
