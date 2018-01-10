@@ -42,7 +42,8 @@ class MenuController
       main_menu
     when 6
       system "clear"
-      delete_all
+      @address_book.delete_all
+      puts "All entries from your address book have been deleted."
       main_menu
     when 7
       puts "Good-bye!"
@@ -113,18 +114,6 @@ class MenuController
   def delete_entry(entry)
     address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
-  end
-
-  def delete_all
-   print "Are you sure you want to delete all entries from your address book? "
-   selection = gets.chomp
-     if selection.include?('y' || "Y")
-       address_book.entries.clear
-       print "All entries from your address book have been deleted.\n"
-       main_menu
-     else
-      main_menu
-     end
   end
 
   def edit_entry(entry)
